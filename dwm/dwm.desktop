@@ -1,0 +1,11 @@
+# dwm entry for dm(like lightdm)
+# copy this file to /usr/share/xsessions and reboot
+
+[Desktop Entry]
+Name=DWM
+Comment=Dynamic window manager
+Exec=dwm
+TryExec=dwm
+Icon=dwm
+Type=Xsession
+X-GDM-SessionRegisters=true
