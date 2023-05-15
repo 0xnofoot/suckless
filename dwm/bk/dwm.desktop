@@ -1,5 +1,5 @@
 # dwm entry for dm(like lightdm)
-# make a link to /usr/share/xsessions and reboot
+# copy this file to /usr/share/xsessions and reboot
 
 [Desktop Entry]
 Name=DWM
