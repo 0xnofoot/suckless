@@ -2527,8 +2527,6 @@ void focuswin(const Arg *arg) {
 	}
 }
 
-
-
 void
 togglewin(const Arg *arg)
 {
@@ -3013,24 +3011,24 @@ view(const Arg *arg)
 
 void
 viewtoleft(const Arg *arg) {
-	if(__builtin_popcount(selmon->tagset[selmon->seltags] & TAGMASK) == 1
-	&& selmon->tagset[selmon->seltags] > 1) {
-		selmon->seltags ^= 1; /* toggle sel tagset */
-		selmon->tagset[selmon->seltags] = selmon->tagset[selmon->seltags ^ 1] >> 1;
-		focus(NULL);
-		arrange(selmon);
+	unsigned int NUMTAGS = sizeof(tags) / sizeof(tags[0]);
+	int nexttag = selmon->pertag->curtag - 2;
+	if (nexttag < 0) {
+		nexttag = NUMTAGS-1;
 	}
+	Arg viewarg = {.ui = 1 << nexttag};
+	view(&viewarg);
 }
 
 void
 viewtoright(const Arg *arg) {
-	if(__builtin_popcount(selmon->tagset[selmon->seltags] & TAGMASK) == 1
-	&& selmon->tagset[selmon->seltags] & (TAGMASK >> 1)) {
-		selmon->seltags ^= 1; /* toggle sel tagset */
-		selmon->tagset[selmon->seltags] = selmon->tagset[selmon->seltags ^ 1] << 1;
-		focus(NULL);
-		arrange(selmon);
+	unsigned int NUMTAGS = sizeof(tags) / sizeof(tags[0]);
+	unsigned int nexttag = selmon->pertag->curtag;
+	if (nexttag >= NUMTAGS) {
+		nexttag = 0;
 	}
+	Arg viewarg = {.ui = 1 << nexttag};
+	view(&viewarg);
 }
 
 Client *

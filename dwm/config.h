@@ -51,7 +51,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",   NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Edge Dev",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
@@ -127,6 +127,8 @@ static Key keys[] = {
 	{ MODKEY,              XK_l,                    viewtoright,    {0} },
 	// 切换最近停留的桌面
 	{ MODKEY,              XK_Tab,                  view,           {0} },
+	// 是否显示状态栏
+	{ MODKEY,              XK_b,                    togglebar,      {0} },
 	// 数字按键映射
 	TAGKEYS(               XK_1,                      0)
 	TAGKEYS(               XK_2,                      1)
@@ -168,7 +170,7 @@ static Key keys[] = {
 	// 关闭当前窗口
 	{ MODKEY|ShiftMask,    XK_q,                    killclient,     {0} },
 	//slash:斜杠，循环切换窗口模式，堆叠模式-平铺模式
-	{ MODKEY,              XK_slash,                cyclelayout,    { .i = +1  }  },
+	{ MODKEY,              XK_slash,                cyclelayout,    { .i = 1 } },
 	// 全屏
 	{ MODKEY|ShiftMask,    XK_space,                fullscreen,     {0} },
 
