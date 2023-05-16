@@ -267,6 +267,7 @@ static void togglescratch(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void togglewin(const Arg *arg);
+static void cyclelayout(const Arg *arg);
 static void hidewin(const Arg *arg);
 static void restorewin(const Arg *arg);
 static void hideotherwins(const Arg *arg);
@@ -2539,6 +2540,21 @@ togglewin(const Arg *arg)
 			show(c);
 		focus(c);
 		restack(selmon);
+	}
+}
+
+void cyclelayout(const Arg *arg) {
+	Layout *l = selmon->lt[selmon->sellt];
+	if (arg->i > 0) {
+		if (l == &layouts[0])
+			setlayout(&((Arg) { .v = &layouts[2] }));
+		else
+			setlayout(&((Arg) { .v = &layouts[0] }));
+	} else {
+		if (l == &layouts[0])
+			setlayout(&((Arg) { .v = &layouts[2] }));
+		else
+			setlayout(&((Arg) { .v = &layouts[0] }));
 	}
 }
 

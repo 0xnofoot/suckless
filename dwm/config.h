@@ -143,9 +143,9 @@ static Key keys[] = {
 	{ MODKEY,              XK_comma,                setmfact,       {.f = -0.05} },
 	// period:句号，调整主窗口大小
 	{ MODKEY,              XK_period,               setmfact,       {.f = +0.05} },
-	// 切换窗口平铺模式
+	// 切换窗口布局
 	{ MODKEY|ShiftMask,    XK_comma,                incnmaster,     {.i = +1 } },
-	// 切换窗口平铺模式
+	// 切换窗口布局
 	{ MODKEY|ShiftMask,    XK_period,               incnmaster,     {.i = -1 } },
 	// 改变聚焦窗口
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
@@ -167,12 +167,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_o,                    restoreotherwins, {0}},
 	// 关闭当前窗口
 	{ MODKEY|ShiftMask,    XK_q,                    killclient,     {0} },
-	// 平铺窗口模式
-	{ MODKEY,              XK_t,                    setlayout,      {.v = &layouts[0]} },
-	// 堆叠窗口模式
-	{ MODKEY,              XK_m,                    setlayout,      {.v = &layouts[2]} },
+	//slash:斜杠，循环切换窗口模式，堆叠模式-平铺模式
+	{ MODKEY,              XK_slash,                cyclelayout,    { .i = +1  }  },
 	// 全屏
 	{ MODKEY|ShiftMask,    XK_space,                fullscreen,     {0} },
+
 
 	/******************窗口缩放逻辑******************/
 	// 完全通过键盘实现窗口移动和放缩逻辑
