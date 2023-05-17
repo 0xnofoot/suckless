@@ -1,4 +1,3 @@
-*.orig
-*.rej
-*.o
 st
+*.o
+.ccls-cache/
